@@ -1,63 +1,23 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
   <title>Login | Traders Gabut</title>
-
-  <!-- Google Identity Services -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-  <style>
-    body {
-      font-family: Arial;
-      padding: 40px;
-    }
-    .btn {
-      padding: 12px 18px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body>
 
 <h2>Login dengan Google</h2>
 
-<div
-  id="g_id_onload"
-  data-client_id="ISI_DENGAN_CLIENT_ID_GOOGLE_CLOUD"
-  data-callback="handleCredentialResponse">
-</div>
-
-<div class="g_id_signin" data-type="standard"></div>
-
-<p id="msg"></p>
+<button onclick="login()">Login</button>
 
 <script>
-const WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbyPtQD4FsElq3j3gvuNJpLaYOOEz7JZXIspxVh3mMBm1SYvSXMuGfSc8QdtKoAEvFJZ/exec";
+function login() {
+  const email = prompt("Masukkan email Google kamu");
 
-function handleCredentialResponse(response) {
-  // decode JWT
-  const data = JSON.parse(atob(response.credential.split('.')[1]));
-  const email = data.email;
+  if (!email) return alert("Email wajib diisi");
 
-  fetch(WEB_APP_URL, {
-    method: "POST",
-    body: JSON.stringify({ email }),
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(res => res.json())
-  .then(res => {
-    if (res.status === "OK") {
-      window.location.href = "dashboarduser.html";
-    } else {
-      window.location.href = "halamanbelumaktiv.html";
-    }
-  })
-  .catch(() => {
-    document.getElementById("msg").innerText = "Server error";
-  });
+  window.location.href =
+    "https://script.google.com/macros/s/AKfycbwqnVfUKrebECAf5iTBiGp6gW7LFtDYliNlbNIM9OegmOFFTXPEQZYJaSFJfjq_NAbCrw/exec?email="
+    + encodeURIComponent(email);
 }
 </script>
 
