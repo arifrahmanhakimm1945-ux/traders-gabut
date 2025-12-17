@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Ruang Traders</title>
+
+  <script>
+if (sessionStorage.getItem("auth") !== "true") {
+  window.location.href = "login.html";
+}
+</script>
+
+
+  <style>
+:root {
+  --green:#10d7a3;
+  --green-dark:#16a34a;
+  --muted:#6b7280;
+  --shadow:0 6px 18px rgba(0,0,0,0.08);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto;
+}
+
+body {
+  margin:0;
+  padding:32px 20px;
+  background:#ffffff;
+  color:#111827;
+}
+
+.container {
+  max-width:1000px;
+  margin:0 auto;
+}
+
+/* ===== HEADER ===== */
+h1 {
+  text-align:center;
+  font-size:32px;
+  margin-bottom:40px;
+  color:var(--green);
+}
+
+/* ===== GRID ===== */
+.service-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+/* ===== CARD ===== */
+.service-card {
+  background:#ffffff;
+  border-radius:16px;
+  padding:28px 24px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  cursor:pointer;
+  border:1px solid #e5e7eb;
+  transition:0.25s ease;
+}
+
+.service-card:hover {
+  background:var(--green);
+  color:white;
+  transform:translateY(-4px);
+  border-color:var(--green);
+}
+
+/* ===== ICON ===== */
+.icon-circle {
+  width:72px;
+  height:72px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  background:#ecfdf5;
+  color:var(--green-dark);
+  transition:0.25s ease;
+}
+
+.service-card:hover .icon-circle {
+  background:white;
+  color:var(--green-dark);
+}
+
+/* ===== TEXT ===== */
+.service-card h3 {
+  font-size:20px;
+  margin:0 0 10px;
+}
+
+.service-card p {
+  font-size:14px;
+  line-height:1.5;
+  color:var(--muted);
+}
+
+.service-card:hover p {
+  color:#ecfeff;
+}
+
+.service-card {
+  text-decoration:none;
+  color:inherit;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .service-grid {
+    grid-template-columns:1fr;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Layanan Kami</h1>
+
+  <div class="service-grid">
+
+    <a href="rekomendasianalis.html" class="service-card">
+      <div class="icon-circle">👤</div>
+      <h3>Rekomendasi Analis</h3>
+      <p>Kami membantu Anda menemukan analis sesuai gaya trading Anda.</p>
+    </a>
+
+    <a href="Risk management flow.html" class="service-card">
+  <div class="icon-circle">📊</div>
+  <h3>Risk Management</h3>
+  <p>Sistem menghitung ukuran lot dan batas kerugian sesuai modal.</p>
+</a>
+
+    <div class="service-card" onclick="go('tracker.html')">
+      <div class="icon-circle">✅</div>
+      <h3>Tracker Analis</h3>
+      <p>Evaluasi performa trading dan analisis secara objektif.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function go(page){
+  alert("Menu ini akan aktif setelah fitur siap");
+  // window.location.href = page;
+}
+</script>
+
+</body>
+</html>
